@@ -1,0 +1,13 @@
+# Checking-in and Checking-out
+*             text=auto
+*.c           text diff=cpp
+*.docx        diff=astextplain
+*.h           text diff=cpp
+*.pdf         diff=astextplain
+*.txt         text
+.clang-format text
+.editorconfig text
+
+# Archive Creation
+.gitattributes export-ignore
+.gitignore     export-ignore

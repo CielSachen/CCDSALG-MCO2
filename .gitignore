@@ -1,0 +1,9 @@
+# Editor Settings
+.vscode/
+
+# CMake Build
+**/bin/
+**/build/
+
+# Miscellaneous
+**/.DS_Store
