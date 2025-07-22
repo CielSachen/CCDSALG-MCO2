@@ -6,16 +6,13 @@
 
 #define MAX_VERTEX_LABEL_LENGTH 8
 
-typedef char Vertex[MAX_VERTEX_LABEL_LENGTH + 1];
+#define MAX_GRAPH_VERTEX_COUNT 20
 
-typedef struct Node {
-    Vertex vertex;
-    struct Node *next;
-} Node;
+typedef char Vertex[MAX_VERTEX_LABEL_LENGTH + 1];
 
 typedef struct Graph {
     const size_t vertex_count;
-    Node **adjacencies;
+    Vertex adjacencies_by_vertex[MAX_GRAPH_VERTEX_COUNT][MAX_GRAPH_VERTEX_COUNT];
     size_t adjacencies_length;
 } Graph;
 
@@ -24,16 +21,20 @@ typedef struct GraphEdge {
     Vertex destination;
 } GraphEdge;
 
-Graph *create_graph(const size_t vertex_count);
+void create(Graph *const graph, const size_t vertex_count);
 
 bool has_vertex(const Graph *const graph, const Vertex vertex);
 
-bool add_edge(Graph *const graph, const Vertex source_vertex, const Vertex destination_vertex);
+void add_edge(Graph *const graph, const Vertex source_vertex, const Vertex destination_vertex);
 
-GraphEdge **get_edges(const Graph *const graph);
+void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_count);
 
-Graph *clone_graph(const Graph *const graph);
+void clone(const Graph *const graph, Graph *const new_graph);
 
-void sort_graph_adjacencies(Graph *const graph);
+void sort_adjacencies(Graph *const graph);
+
+size_t get_adjacency_count(const Vertex adjacencies_by_vertex[MAX_GRAPH_VERTEX_COUNT]);
+
+bool has_adjacency(const Vertex adjacencies_by_vertex[MAX_GRAPH_VERTEX_COUNT], const Vertex vertex);
 
 #endif  // SOCIAL_NETWORK_GRAPH_H_
