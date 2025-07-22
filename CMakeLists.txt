@@ -1,18 +1,25 @@
 cmake_minimum_required(VERSION 3.15...4.0)
 
+project(ConvexHull
+  VERSION 1.0.0
+  DESCRIPTION "The second major course output (MCO2) for CCDSALG."
+  HOMEPAGE_URL "https://github.com/CielSachen/CCDSALG-MCO2#readme"
+  LANGUAGES C
+)
+
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 
-project(ConvexHull
-        VERSION 1.0.0
-        DESCRIPTION "The second major course output (MCO2) for CCDSALG."
-        HOMEPAGE_URL "https://github.com/CielSachen/CCDSALG-MCO2#readme"
-        LANGUAGES C)
-
 set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_C_EXTENSIONS OFF)
 
-add_compile_options(-Wall -Werror -Wextra -Wpedantic -O2)
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
-set(HEADER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
+add_compile_options(-Wall -Werror -Wextra -Wpedantic)
 
-add_subdirectory(app)
 add_subdirectory(src)
+add_subdirectory(app)

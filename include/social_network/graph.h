@@ -19,10 +19,21 @@ typedef struct Graph {
     size_t adjacencies_length;
 } Graph;
 
+typedef struct GraphEdge {
+    Vertex source;
+    Vertex destination;
+} GraphEdge;
+
 Graph *create_graph(const size_t vertex_count);
 
 bool has_vertex(const Graph *const graph, const Vertex vertex);
 
 bool add_edge(Graph *const graph, const Vertex source_vertex, const Vertex destination_vertex);
+
+GraphEdge **get_edges(const Graph *const graph);
+
+Graph *clone_graph(const Graph *const graph);
+
+void sort_graph_adjacencies(Graph *const graph);
 
 #endif  // SOCIAL_NETWORK_GRAPH_H_
