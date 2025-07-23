@@ -1,6 +1,7 @@
 # Checking-in and Checking-out
 *             text=auto
 *.c           text diff=cpp
+*.cpp         text diff=cpp
 *.docx        diff=astextplain
 *.h           text diff=cpp
 *.pdf         diff=astextplain

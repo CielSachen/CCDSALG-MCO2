@@ -16,12 +16,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef SOCIAL_NETWORK_TRAVERSAL_H_
-#define SOCIAL_NETWORK_TRAVERSAL_H_
+#include "social_network/queue.h"
 
-#include "graph.h"
+#include <stdio.h>
+#include <string.h>
 
-void breadth_first_search(const Graph *const graph, const Vertex starting_vertex,
-                          Vertex traversed_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const traversed_vertex_count);
+void initialize_queue(Queue *const queue) {
+    queue->front = 0;
+    queue->rear = 0;
 
-#endif  // SOCIAL_NETWORK_TRAVERSAL_H_
+    for (size_t i = 0; i < MAX_GRAPH_VERTEX_COUNT; i++) {
+        for (size_t j = 0; j < MAX_VERTEX_LABEL_LENGTH; j++) {
+            queue->data[i][j] = '\0';
+        }
+    }
+}
+
+void enqueue(Queue *const queue, const Vertex elm) { strncpy(queue->data[queue->rear++], elm, MAX_GRAPH_VERTEX_COUNT); }
+
+void dequeue(Queue *const queue) { queue->front++; }
+
+void peak(Queue *const queue, Vertex elm) { strncpy(elm, queue->data[queue->front], MAX_VERTEX_LABEL_LENGTH); }
+
+bool is_full(const Queue *const queue) { return queue->rear == MAX_GRAPH_VERTEX_COUNT; }
+
+bool is_empty(const Queue *const queue) { return queue->front == queue->rear; }

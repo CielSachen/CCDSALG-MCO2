@@ -1,7 +1,13 @@
 set(project_include_dir "${PROJECT_SOURCE_DIR}/include")
 set(project_header_dir "${project_include_dir}/social_network")
 
-add_library(graph STATIC graph.c "${project_header_dir}/graph.h")
+add_library(graph STATIC
+  graph.c
+  "${project_header_dir}/graph.h"
+  traversal.c
+  "${project_header_dir}/traversal.h"
+  queue.c
+  "${project_header_dir}/queue.h")
 target_include_directories(graph
   PUBLIC ${project_include_dir}
 )

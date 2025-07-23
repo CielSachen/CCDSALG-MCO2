@@ -1,9 +1,27 @@
+/*
+ * Social Network uses graphs to represent relationships between users.
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "social_network/graph.h"
 
 #include <stdlib.h>
 #include <string.h>
 
-void create(Graph *const graph, const size_t vertex_cnt) {
+void initialize_graph(Graph *const graph, const size_t vertex_cnt) {
     *(size_t *)&graph->vertex_count = vertex_cnt;
     graph->adjacencies_length = 0;
 
@@ -16,7 +34,7 @@ void create(Graph *const graph, const size_t vertex_cnt) {
     }
 }
 
-static size_t get_vertex_index(const Graph *const graph, const Vertex vertex) {
+size_t get_vertex_index(const Graph *const graph, const Vertex vertex) {
     for (size_t i = 0; i < graph->adjacencies_length; i++) {
         if (strncmp(graph->adjacencies_by_vertex[i][0], vertex, MAX_VERTEX_LABEL_LENGTH) == 0) {
             return i;
@@ -89,8 +107,8 @@ void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_c
     }
 }
 
-void clone(const Graph *const graph, Graph *const new_graph) {
-    create(new_graph, graph->vertex_count);
+void clone_graph(const Graph *const graph, Graph *const new_graph) {
+    initialize_graph(new_graph, graph->vertex_count);
 
     for (size_t i = 0; i < new_graph->vertex_count; i++) {
         size_t j = 1;

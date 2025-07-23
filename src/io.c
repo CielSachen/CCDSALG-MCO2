@@ -1,3 +1,21 @@
+/*
+ * Social Network uses graphs to represent relationships between users.
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include "social_network/io.h"
 
 #include <math.h>
@@ -5,7 +23,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void parse_graph_from_file(const char in_file_name[], Graph *const graph) {
+#include "social_network/traversal.h"
+
+void parse_graph_from_file(const StringBuffer in_file_name, Graph *const graph) {
     FILE *file = fopen(in_file_name, "r");
 
     if (!file) {
@@ -23,7 +43,7 @@ void parse_graph_from_file(const char in_file_name[], Graph *const graph) {
 
     sscanf(in_buff, "%d", &vertex_cnt);
 
-    create(graph, vertex_cnt);
+    initialize_graph(graph, vertex_cnt);
 
     for (int i = 0; i < vertex_cnt; i++) {
         // Presumption: Assume that the input file contents are correct.
@@ -182,6 +202,33 @@ void create_output_file_4(const Graph *const graph, const char graph_name) {
         }
 
         fprintf(out_file, "\n");
+    }
+
+    fclose(out_file);
+}
+
+void create_output_file_5(const Graph *const graph, const char graph_name, const Vertex starting_vertex) {
+    StringBuffer out_file_name;
+
+    sprintf(out_file_name, "%c-BFS.txt", graph_name);
+
+    FILE *out_file = fopen(out_file_name, "w");
+
+    if (!out_file) {
+        printf("File %s not found.", out_file_name);
+
+        return;
+    }
+
+    Vertex traversed_vertices[graph->vertex_count];
+    size_t traversed_vertex_cnt = 0;
+
+    breadth_first_search(graph, starting_vertex, traversed_vertices, &traversed_vertex_cnt);
+
+    for (size_t i = 0; i < traversed_vertex_cnt; i++) {
+        fprintf(out_file, "%s", traversed_vertices[i]);
+
+        fprintf(out_file, i < traversed_vertex_cnt - 1 ? " " : "\n");
     }
 
     fclose(out_file);

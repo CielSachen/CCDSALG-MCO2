@@ -1,38 +1,65 @@
+/*
+ * Social Network uses graphs to represent relationships between users.
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "social_network/io.h"
+#include "utils.h"
 
 int main(void) {
-    // THIS WILL SIMPLY PRINT OUT THE CREATED ADJACENCY LIST TO VERIFY IF IT'S CORRECT
-    const char test_files[4][BUFFER_SIZE] = {"../specs/input-files/A.txt", "../specs/input-files/G.txt",
-                                             "../specs/input-files/Y.txt", "../specs/input-files/Z.txt"};
+    StringBuffer in_file_name;
 
-    for (size_t i = 0; i < 4; i++) {
-        const char *const file_path = test_files[i];
+    printf("Input filename: %s\n", in_file_name);
 
-        Graph graph;
-        const char graph_name = test_files[i][21];
+    get_string_input(in_file_name, sizeof in_file_name);
 
-        parse_graph_from_file(file_path, &graph);
+    Graph graph;
+    const char graph_name = in_file_name[strlen(in_file_name) - 5];
 
-        {
-            Graph sorted_graph;
+    parse_graph_from_file(in_file_name, &graph);
 
-            clone(&graph, &sorted_graph);
+    // Minor optimization to reduce the lifetime of the cloned struct.
+    {
+        Graph sorted_graph;
 
-            sort_adjacencies(&sorted_graph);
+        clone_graph(&graph, &sorted_graph);
 
-            create_output_file_1(&sorted_graph, graph_name);
+        sort_adjacencies(&sorted_graph);
 
-            create_output_file_2(&sorted_graph, graph_name);
+        create_output_file_1(&sorted_graph, graph_name);
+        create_output_file_2(&sorted_graph, graph_name);
+
+        Vertex starting_vertex = "Clark";
+
+        printf("Input start vertex for the traversal: ");
+
+        get_string_input(starting_vertex, sizeof starting_vertex);
+
+        if (has_vertex(&sorted_graph, starting_vertex)) {
+            create_output_file_5(&sorted_graph, graph_name, starting_vertex);
+        } else {
+            printf("Vertex %s not found.\n", starting_vertex);
         }
-
-        create_output_file_3(&graph, graph_name);
-
-        create_output_file_4(&graph, graph_name);
     }
+
+    create_output_file_3(&graph, graph_name);
+    create_output_file_4(&graph, graph_name);
 
     return 0;
 }
