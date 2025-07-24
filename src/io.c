@@ -20,18 +20,17 @@
 
 #include <math.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 #include "social_network/traversal.h"
 
-void parse_graph_from_file(const StringBuffer in_file_name, Graph *const graph) {
+bool parse_graph_from_file(const StringBuffer in_file_name, Graph *const graph) {
     FILE *file = fopen(in_file_name, "r");
 
     if (!file) {
-        printf("File %s not found.", in_file_name);
+        printf("File %s not found.\n", in_file_name);
 
-        return;
+        return false;
     }
 
     StringBuffer in_buff;
@@ -73,7 +72,7 @@ void parse_graph_from_file(const StringBuffer in_file_name, Graph *const graph) 
 
     fclose(file);
 
-    return;
+    return true;
 }
 
 void create_output_file_1(const Graph *const graph, const char graph_name) {
@@ -84,7 +83,7 @@ void create_output_file_1(const Graph *const graph, const char graph_name) {
     FILE *out_file = fopen(out_file_name, "w");
 
     if (!out_file) {
-        printf("File %s not found.", out_file_name);
+        printf("File %s not found.\n", out_file_name);
 
         return;
     }
@@ -131,7 +130,7 @@ void create_output_file_2(const Graph *const graph, const char graph_name) {
     FILE *out_file = fopen(out_file_name, "w");
 
     if (!out_file) {
-        printf("File %s not found.", out_file_name);
+        printf("File %s not found.\n", out_file_name);
 
         return;
     }
@@ -152,7 +151,7 @@ void create_output_file_3(const Graph *const graph, const char graph_name) {
     FILE *out_file = fopen(out_file_name, "w");
 
     if (!out_file) {
-        printf("File %s not found.", out_file_name);
+        printf("File %s not found.\n", out_file_name);
 
         return;
     }
@@ -180,7 +179,7 @@ void create_output_file_4(const Graph *const graph, const char graph_name) {
     FILE *out_file = fopen(out_file_name, "w");
 
     if (!out_file) {
-        printf("File %s not found.", out_file_name);
+        printf("File %s not found.\n", out_file_name);
 
         return;
     }
@@ -215,20 +214,47 @@ void create_output_file_5(const Graph *const graph, const char graph_name, const
     FILE *out_file = fopen(out_file_name, "w");
 
     if (!out_file) {
-        printf("File %s not found.", out_file_name);
+        printf("File %s not found.\n", out_file_name);
 
         return;
     }
 
-    Vertex traversed_vertices[graph->vertex_count];
-    size_t traversed_vertex_cnt = 0;
+    Vertex visited_vertices[graph->vertex_count];
+    size_t visited_vertex_cnt = 0;
 
-    breadth_first_search(graph, starting_vertex, traversed_vertices, &traversed_vertex_cnt);
+    breadth_first_search(graph, starting_vertex, visited_vertices, &visited_vertex_cnt);
 
-    for (size_t i = 0; i < traversed_vertex_cnt; i++) {
-        fprintf(out_file, "%s", traversed_vertices[i]);
+    for (size_t i = 0; i < visited_vertex_cnt; i++) {
+        fprintf(out_file, "%s", visited_vertices[i]);
 
-        fprintf(out_file, i < traversed_vertex_cnt - 1 ? " " : "\n");
+        fprintf(out_file, i < visited_vertex_cnt - 1 ? " " : "\n");
+    }
+
+    fclose(out_file);
+}
+
+void create_output_file_6(const Graph *const graph, const char graph_name, const Vertex starting_vertex) {
+    StringBuffer out_file_name;
+
+    sprintf(out_file_name, "%c-DFS.txt", graph_name);
+
+    FILE *out_file = fopen(out_file_name, "w");
+
+    if (!out_file) {
+        printf("File %s not found.\n", out_file_name);
+
+        return;
+    }
+
+    Vertex visited_vertices[graph->vertex_count];
+    size_t visited_vertex_cnt = 0;
+
+    depth_first_search(graph, starting_vertex, visited_vertices, &visited_vertex_cnt);
+
+    for (size_t i = 0; i < visited_vertex_cnt; i++) {
+        fprintf(out_file, "%s", visited_vertices[i]);
+
+        fprintf(out_file, i < visited_vertex_cnt - 1 ? " " : "\n");
     }
 
     fclose(out_file);

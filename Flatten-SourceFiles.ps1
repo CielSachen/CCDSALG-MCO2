@@ -9,7 +9,9 @@ $out_dir_path = ".$($path_sep)$($out_dir_name)"
 if (-not(Test-Path -Path $out_dir_path)) {
   New-Item -Path "." -Name $out_dir_name -ItemType "Directory" -Force | Out-Null
 
-  Write-Output -InputObject "Created: $($out_dir_path)`n"
+  Write-Output -InputObject "Created: $($out_dir_path)"
+
+  Write-Output -InputObject ""
 }
 
 Write-Output -InputObject "Copying from $($source_dir_paths -join ", ") to $($out_dir_path)"
@@ -21,7 +23,9 @@ ForEach-Object -Process {
   Write-Output -InputObject "  Copied: $($_.Name)"
 }
 
-Write-Output -InputObject "`nFixing source file #include directives"
+Write-Output -InputObject ""
+
+Write-Output -InputObject "Fixing source file #include directives"
 
 Get-ChildItem -Path $out_dir_path -Include $source_file_exts[0] -File -Recurse |
 ForEach-Object -Process {

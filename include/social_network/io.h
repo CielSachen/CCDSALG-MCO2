@@ -19,6 +19,8 @@
 #ifndef SOCIAL_NETWORK_IO_H_
 #define SOCIAL_NETWORK_IO_H_
 
+#include <stdbool.h>
+
 #include "graph.h"
 
 #define BUFFER_SIZE 32
@@ -29,7 +31,7 @@
 
 typedef char StringBuffer[BUFFER_SIZE + 1];
 
-void parse_graph_from_file(const StringBuffer input_file_name, Graph *const graph);
+bool parse_graph_from_file(const StringBuffer input_file_name, Graph *const graph);
 
 void create_output_file_1(const Graph *const graph, const char graph_name);
 
@@ -40,5 +42,7 @@ void create_output_file_3(const Graph *const graph, const char graph_name);
 void create_output_file_4(const Graph *const graph, const char graph_name);
 
 void create_output_file_5(const Graph *const graph, const char graph_name, const Vertex starting_vertex);
+
+void create_output_file_6(const Graph *const graph, const char graph_name, const Vertex starting_vertex);
 
 #endif  // SOCIAL_NETWORK_IO_H_

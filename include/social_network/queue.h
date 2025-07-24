@@ -19,6 +19,8 @@
 #ifndef SOCIAL_NETWORK_QUEUE_H_
 #define SOCIAL_NETWORK_QUEUE_H_
 
+#include <stddef.h>
+
 #include "graph.h"
 
 typedef struct Queue {

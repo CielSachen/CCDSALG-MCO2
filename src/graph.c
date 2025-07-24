@@ -18,7 +18,6 @@
 
 #include "social_network/graph.h"
 
-#include <stdlib.h>
 #include <string.h>
 
 void initialize_graph(Graph *const graph, const size_t vertex_cnt) {

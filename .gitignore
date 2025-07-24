@@ -5,5 +5,8 @@
 **/bin/
 **/build/
 
+# Flattened Source Files
+dist/
+
 # Miscellaneous
 **/.DS_Store

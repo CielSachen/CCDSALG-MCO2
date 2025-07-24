@@ -23,8 +23,8 @@
 #include "queue.c"
 
 void breadth_first_search(const Graph *const graph, const Vertex starting_vertex,
-                          Vertex traversed_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const traversed_vertex_cnt) {
-    *traversed_vertex_cnt = 0;
+                          Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
+    *visited_vertex_cnt = 0;
 
     bool is_visited[graph->vertex_count];
 
@@ -41,12 +41,12 @@ void breadth_first_search(const Graph *const graph, const Vertex starting_vertex
     enqueue(&queue, starting_vertex);
 
     while (!is_empty(&queue)) {
-        peak(&queue, traversed_vertices[*traversed_vertex_cnt]);
+        peak(&queue, visited_vertices[*visited_vertex_cnt]);
         dequeue(&queue);
 
-        *traversed_vertex_cnt += 1;
+        *visited_vertex_cnt += 1;
 
-        size_t curr_vertex_idx = get_vertex_index(graph, traversed_vertices[*traversed_vertex_cnt - 1]);
+        size_t curr_vertex_idx = get_vertex_index(graph, visited_vertices[*visited_vertex_cnt - 1]);
         size_t i = 1;
 
         while (strlen(graph->adjacencies_by_vertex[curr_vertex_idx][i]) > 0) {
@@ -63,4 +63,44 @@ void breadth_first_search(const Graph *const graph, const Vertex starting_vertex
     }
 
     return;
+}
+
+static void deep_depth_first_search(const Graph *const graph, const Vertex starting_vertex,
+                                    bool is_visited[MAX_GRAPH_VERTEX_COUNT],
+                                    Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
+    size_t starting_vertex_idx = get_vertex_index(graph, starting_vertex);
+
+    strncpy(visited_vertices[*visited_vertex_cnt], starting_vertex, MAX_VERTEX_LABEL_LENGTH);
+
+    *visited_vertex_cnt += 1;
+
+    is_visited[starting_vertex_idx] = true;
+
+    size_t i = 1;
+
+    while (strlen(graph->adjacencies_by_vertex[starting_vertex_idx][i]) > 0) {
+        size_t adjacent_vertex_idx = get_vertex_index(graph, graph->adjacencies_by_vertex[starting_vertex_idx][i]);
+
+        if (!is_visited[adjacent_vertex_idx]) {
+            is_visited[adjacent_vertex_idx] = true;
+
+            deep_depth_first_search(graph, graph->adjacencies_by_vertex[adjacent_vertex_idx][0], is_visited,
+                                    visited_vertices, visited_vertex_cnt);
+        }
+
+        i++;
+    }
+}
+
+void depth_first_search(const Graph *const graph, const Vertex starting_vertex,
+                        Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
+    *visited_vertex_cnt = 0;
+
+    bool is_visited[graph->vertex_count];
+
+    for (size_t i = 0; i < graph->vertex_count; i++) {
+        is_visited[i] = false;
+    }
+
+    deep_depth_first_search(graph, starting_vertex, is_visited, visited_vertices, visited_vertex_cnt);
 }

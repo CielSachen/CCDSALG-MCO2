@@ -40,6 +40,10 @@ The source files can be flattened using a PowerShell script:
 .\Flatten-SourceFiles.ps1
 ```
 
+```bash
+pwsh ./Flatten-SourceFiles.ps1
+```
+
 ---
 
 <img

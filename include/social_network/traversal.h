@@ -19,9 +19,14 @@
 #ifndef SOCIAL_NETWORK_TRAVERSAL_H_
 #define SOCIAL_NETWORK_TRAVERSAL_H_
 
+#include <stddef.h>
+
 #include "graph.h"
 
 void breadth_first_search(const Graph *const graph, const Vertex starting_vertex,
-                          Vertex traversed_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const traversed_vertex_count);
+                          Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_count);
+
+void depth_first_search(const Graph *const graph, const Vertex starting_vertex,
+                        Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt);
 
 #endif  // SOCIAL_NETWORK_TRAVERSAL_H_

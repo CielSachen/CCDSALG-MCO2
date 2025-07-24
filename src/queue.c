@@ -18,7 +18,6 @@
 
 #include "social_network/queue.h"
 
-#include <stdio.h>
 #include <string.h>
 
 void initialize_queue(Queue *const queue) {

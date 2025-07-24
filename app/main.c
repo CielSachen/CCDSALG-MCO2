@@ -25,41 +25,42 @@
 int main(void) {
     StringBuffer in_file_name;
 
-    printf("Input filename: %s\n", in_file_name);
+    printf("Input filename: ");
 
     get_string_input(in_file_name, sizeof in_file_name);
 
     Graph graph;
     const char graph_name = in_file_name[strlen(in_file_name) - 5];
 
-    parse_graph_from_file(in_file_name, &graph);
-
-    // Minor optimization to reduce the lifetime of the cloned struct.
-    {
-        Graph sorted_graph;
-
-        clone_graph(&graph, &sorted_graph);
-
-        sort_adjacencies(&sorted_graph);
-
-        create_output_file_1(&sorted_graph, graph_name);
-        create_output_file_2(&sorted_graph, graph_name);
-
-        Vertex starting_vertex = "Clark";
-
-        printf("Input start vertex for the traversal: ");
-
-        get_string_input(starting_vertex, sizeof starting_vertex);
-
-        if (has_vertex(&sorted_graph, starting_vertex)) {
-            create_output_file_5(&sorted_graph, graph_name, starting_vertex);
-        } else {
-            printf("Vertex %s not found.\n", starting_vertex);
-        }
+    if (!parse_graph_from_file(in_file_name, &graph)) {
+        // Prior function prints an error message.
+        return 1;
     }
 
     create_output_file_3(&graph, graph_name);
     create_output_file_4(&graph, graph_name);
+
+    Graph sorted_graph;
+
+    clone_graph(&graph, &sorted_graph);
+
+    sort_adjacencies(&sorted_graph);
+
+    create_output_file_1(&sorted_graph, graph_name);
+    create_output_file_2(&sorted_graph, graph_name);
+
+    Vertex starting_vertex;
+
+    printf("Input start vertex for the traversal: ");
+
+    get_string_input(starting_vertex, sizeof starting_vertex);
+
+    if (has_vertex(&sorted_graph, starting_vertex)) {
+        create_output_file_5(&sorted_graph, graph_name, starting_vertex);
+        create_output_file_6(&sorted_graph, graph_name, starting_vertex);
+    } else {
+        printf("Vertex %s not found.\n", starting_vertex);
+    }
 
     return 0;
 }
