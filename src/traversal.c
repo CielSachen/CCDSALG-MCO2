@@ -20,7 +20,7 @@
 
 #include <string.h>
 
-#include "queue.c"
+#include "social_network/queue.h"
 
 void breadth_first_search(const Graph *const graph, const Vertex starting_vertex,
                           Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
