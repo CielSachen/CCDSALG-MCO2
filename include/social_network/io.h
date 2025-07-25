@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ * Copyright (C) 2025  Raphael Panaligan
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,5 +44,8 @@ void create_output_file_4(const Graph *const graph, const char graph_name);
 void create_output_file_5(const Graph *const graph, const char graph_name, const Vertex starting_vertex);
 
 void create_output_file_6(const Graph *const graph, const char graph_name, const Vertex starting_vertex);
+
+void create_output_file_7(const Graph *const graph, const char graph_name, const Graph *const subgraph,
+                          const char subgraph_name);
 
 #endif  // SOCIAL_NETWORK_IO_H_

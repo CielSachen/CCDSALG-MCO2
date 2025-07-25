@@ -17,9 +17,10 @@
  */
 
 /**
- * @file main.c
- * @brief The source code containing the implementation of the social network graphing program.
+ * @file 28-BONUS.c
+ * @brief The source code containing the implementation of the bonus social network graphing program.
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
 
@@ -30,13 +31,13 @@
 #include "utils.h"
 
 /**
- * @brief The entry point of the social network graphing program.
+ * @brief The entry point of the bonus social network graphing program.
  * @return The program’s resulting exit code.
  */
 int main(void) {
     StringBuffer in_file_name;
 
-    printf("Input filename: ");
+    printf("Input filename (Parent graph): ");
 
     get_string_input(in_file_name, sizeof in_file_name);
 
@@ -48,30 +49,23 @@ int main(void) {
         return 1;
     }
 
-    create_output_file_3(&graph, graph_name);
-    create_output_file_4(&graph, graph_name);
+    sort_adjacencies(&graph);
 
-    Graph sorted_graph;
+    printf("Input filename (Subgraph): ");
 
-    clone_graph(&graph, &sorted_graph);
+    get_string_input(in_file_name, sizeof in_file_name);
 
-    sort_adjacencies(&sorted_graph);
+    Graph subgraph;
+    const char subgraph_name = in_file_name[strlen(in_file_name) - 5];
 
-    create_output_file_1(&sorted_graph, graph_name);
-    create_output_file_2(&sorted_graph, graph_name);
-
-    Vertex starting_vertex;
-
-    printf("Input start vertex for the traversal: ");
-
-    get_string_input(starting_vertex, sizeof starting_vertex);
-
-    if (has_vertex(&sorted_graph, starting_vertex)) {
-        create_output_file_5(&sorted_graph, graph_name, starting_vertex);
-        create_output_file_6(&sorted_graph, graph_name, starting_vertex);
-    } else {
-        printf("Vertex %s not found.\n", starting_vertex);
+    if (!parse_graph_from_file(in_file_name, &subgraph)) {
+        // Prior function prints an error message.
+        return 1;
     }
+
+    sort_adjacencies(&subgraph);
+
+    create_output_file_7(&graph, graph_name, &subgraph, subgraph_name);
 
     return 0;
 }

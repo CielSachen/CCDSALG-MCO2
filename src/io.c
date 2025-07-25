@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ * Copyright (C) 2025  Raphael Panaligan
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -58,13 +58,13 @@ bool parse_graph_from_file(const StringBuffer in_file_name, Graph *const graph) 
         while (adjacent_vertex != NULL) {
             if (strncmp(adjacent_vertex, NULL_VERTEX_LABEL, MAX_VERTEX_LABEL_LENGTH) == 0) {
                 if (!has_vertex(graph, vertex)) {
-                    add_edge(graph, vertex, NULL);
+                    add_adjacency(graph, vertex, NULL);
                 }
 
                 break;
             }
 
-            add_edge(graph, vertex, adjacent_vertex);
+            add_adjacency(graph, vertex, adjacent_vertex);
 
             adjacent_vertex = strtok(NULL, WHITESPACE_DELIMITER);
         }
@@ -256,6 +256,65 @@ void create_output_file_6(const Graph *const graph, const char graph_name, const
 
         fprintf(out_file, i < visited_vertex_cnt - 1 ? " " : "\n");
     }
+
+    fclose(out_file);
+}
+
+void create_output_file_7(const Graph *const graph, const char graph_name, const Graph *const subgraph,
+                          const char subgraph_name) {
+    StringBuffer out_file_name;
+
+    sprintf(out_file_name, "%c-%c-SUBGRAPH.txt", graph_name, subgraph_name);
+
+    FILE *out_file = fopen(out_file_name, "w");
+
+    if (!out_file) {
+        printf("File %s not found.\n", out_file_name);
+
+        return;
+    }
+
+    size_t matching_vertex_cnt = 0;
+
+    for (size_t i = 0; i < subgraph->vertex_count; i++) {
+        bool is_matching_vertex = has_vertex(graph, subgraph->adjacencies_by_vertex[i][0]);
+
+        fprintf(out_file, "%s %c\n", subgraph->adjacencies_by_vertex[i][0], is_matching_vertex ? '+' : '-');
+
+        if (is_matching_vertex) {
+            matching_vertex_cnt++;
+        }
+    }
+
+    size_t subgraph_edge_cnt = powl(subgraph->vertex_count, 2);
+    GraphEdge subgraph_edges[subgraph_edge_cnt];
+
+    get_edges(subgraph, subgraph_edges, &subgraph_edge_cnt);
+
+    size_t graph_edge_cnt = powl(graph->vertex_count, 2);
+    GraphEdge graph_edges[graph_edge_cnt];
+
+    get_edges(graph, graph_edges, &graph_edge_cnt);
+
+    size_t matching_edge_cnt = 0;
+
+    for (size_t i = 0; i < subgraph_edge_cnt; i++) {
+        GraphEdge *subgraph_edge = &subgraph_edges[i];
+
+        bool is_matching_edge =
+            has_edge(graph_edges, graph_edge_cnt, subgraph_edge->source, subgraph_edge->destination);
+
+        fprintf(out_file, "(%s,%s) %c\n", subgraph_edge->source, subgraph_edge->destination,
+                is_matching_edge ? '+' : '-');
+
+        if (is_matching_edge) {
+            matching_edge_cnt++;
+        }
+    }
+
+    fprintf(out_file, "%c is %s subgraph of %c\n", subgraph_name,
+            matching_vertex_cnt == subgraph->vertex_count && matching_edge_cnt == subgraph_edge_cnt ? "a" : "not a",
+            graph_name);
 
     fclose(out_file);
 }

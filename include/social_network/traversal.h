@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
+ * Copyright (C) 2025  Raphael Panaligan
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
