@@ -136,8 +136,8 @@ void create_output_file_2(const Graph *const graph, const char graph_name) {
     }
 
     for (size_t i = 0; i < graph->vertex_count; i++) {
-        fprintf(out_file, "%*s %ld\n", -MAX_VERTEX_LABEL_LENGTH, graph->adjacencies_by_vertex[i][0],
-                get_adjacency_count(graph->adjacencies_by_vertex[i]));
+        fprintf(out_file, "%*s %d\n", -MAX_VERTEX_LABEL_LENGTH, graph->adjacencies_by_vertex[i][0],
+                (int)get_adjacency_count(graph->adjacencies_by_vertex[i]));
     }
 
     fclose(out_file);
