@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,15 @@
 
 /**
  * @file graph.h
- * @brief The header containing the public APIs of the graph implementation and its helper functions.
+ * @brief The helper functions that are used for handling and interacting with graphs and their vertices.
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef SOCIAL_NETWORK_GRAPH_H_
 #define SOCIAL_NETWORK_GRAPH_H_
@@ -59,7 +64,7 @@ typedef struct Graph {
  * @brief Initializes a graph’s vertex adjacency arrays to their default values and sets its vertex count.
  * @param[in,out] graph The graph to initialize.
  * @param vertex_count The number of vertices the graph should contain.
- * @pre The @p vertex_count doesn’t exceed `MAX_GRAPH_VERTEX_COUNT`.
+ * @pre The `vertex_count` doesn’t exceed `MAX_GRAPH_VERTEX_COUNT`.
  */
 void initialize_graph(Graph *const graph, const size_t vertex_count);
 
@@ -140,12 +145,16 @@ void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_c
 /**
  * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
  * @param[in] edges The edges to check against.
- * @param[in] edge_cnt The number of edges to check against.
+ * @param[in] edge_count The number of edges to check against.
  * @param[in] source_vertex The first or source vertex to check for.
  * @param[in] destination_vertex The second or destination vertex to check for.
  * @return Whether the pair of vertices has a corresponding edge in the array of edges.
  */
-bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex source_vertex,
+bool has_edge(const GraphEdge edges[], const size_t edge_count, const Vertex source_vertex,
               const Vertex destination_vertex);
 
 #endif  // SOCIAL_NETWORK_GRAPH_H_
+
+#ifdef __cplusplus
+}
+#endif

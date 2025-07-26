@@ -1,6 +1,4 @@
-extern "C" {
 #include "social_network/queue.h"
-}
 
 #include <gtest/gtest.h>
 

@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,12 +16,27 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+/**
+ * @file traversal.c
+ * @author Raphael Panaligan
+ * @author Jek Degullado
+ * @copyright GNU AGPLv3
+ */
+
 #include "social_network/traversal.h"
 
 #include <string.h>
 
 #include "social_network/queue.h"
 
+/**
+ * @brief Traverses through all of a graph’s connected vertices starting from a specific vertex.
+ * @details This uses the breadth-first search algorithm to traverse through the graph.
+ * @param[in] graph The graph to traverse through.
+ * @param starting_vertex The vertex to start from.
+ * @param[out] visited_vertices The vertices visited during the traversal.
+ * @param[out] visited_vertex_cnt The number of vertices visited during the traversal.
+ */
 void breadth_first_search(const Graph *const graph, const Vertex starting_vertex,
                           Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
     *visited_vertex_cnt = 0;
@@ -65,6 +80,15 @@ void breadth_first_search(const Graph *const graph, const Vertex starting_vertex
     return;
 }
 
+/**
+ * @brief Traverses through all of a graph’s connected vertices starting from a specific vertex.
+ * @details This uses the depth-first search algorithm to traverse through the graph.
+ * @param[in] graph The graph to traverse through.
+ * @param starting_vertex The vertex to start from.
+ * @param[in,out] is_visited The visit statuses of the graph’s vertices.
+ * @param[out] visited_vertices The vertices visited during the traversal.
+ * @param[out] visited_vertex_cnt The number of vertices visited during the traversal.
+ */
 static void deep_depth_first_search(const Graph *const graph, const Vertex starting_vertex,
                                     bool is_visited[MAX_GRAPH_VERTEX_COUNT],
                                     Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
@@ -92,6 +116,14 @@ static void deep_depth_first_search(const Graph *const graph, const Vertex start
     }
 }
 
+/**
+ * @brief Traverses through all of a graph’s connected vertices starting from a specific vertex.
+ * @details This uses the depth-first search algorithm to traverse through the graph.
+ * @param[in] graph The graph to traverse through.
+ * @param starting_vertex The vertex to start from.
+ * @param[out] visited_vertices The vertices visited during the traversal.
+ * @param[out] visited_vertex_cnt The number of vertices visited during the traversal.
+ */
 void depth_first_search(const Graph *const graph, const Vertex starting_vertex,
                         Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt) {
     *visited_vertex_cnt = 0;

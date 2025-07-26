@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
 
 /**
  * @file queue.c
- * @brief The source code containing the implementation of the queue helper functions.
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
 
@@ -45,20 +45,23 @@ void initialize_queue(Queue *const queue) {
 /**
  * @brief Adds an element to the rear of the queue.
  * @param[in,out] queue The queue to add to.
- * @param[in] element The element to add.
+ * @param[in] elm The element to add.
+ * @pre The queue is not full.
  */
 void enqueue(Queue *const queue, const Vertex elm) { strncpy(queue->data[queue->rear++], elm, MAX_GRAPH_VERTEX_COUNT); }
 
 /**
  * @brief Removes the element at the front of the queue.
  * @param[in,out] queue The queue to remove from.
+ * @pre The queue is not empty.
  */
 void dequeue(Queue *const queue) { queue->front++; }
 
 /**
  * @brief Gets the element at the front of the queue.
  * @param[in] queue The queue to get from.
- * @param[out] element The element at the front of the queue.
+ * @param[out] elm The element at the front of the queue.
+ * @pre The queue is not empty.
  */
 void peak(Queue *const queue, Vertex elm) { strncpy(elm, queue->data[queue->front], MAX_VERTEX_LABEL_LENGTH); }
 

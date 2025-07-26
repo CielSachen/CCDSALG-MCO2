@@ -1,6 +1,4 @@
-extern "C" {
 #include "social_network/graph.h"
-}
 
 #include <gtest/gtest.h>
 

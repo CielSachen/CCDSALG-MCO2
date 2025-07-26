@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,10 +18,15 @@
 
 /**
  * @file queue.h
- * @brief The header containing the public APIs of the queue implementation and its helper functions.
+ * @brief The helper functions that are used for handling and interacting with queues and their elements.
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #ifndef SOCIAL_NETWORK_QUEUE_H_
 #define SOCIAL_NETWORK_QUEUE_H_
@@ -55,12 +60,14 @@ void initialize_queue(Queue *const queue);
  * @brief Adds an element to the rear of the queue.
  * @param[in,out] queue The queue to add to.
  * @param[in] element The element to add.
+ * @pre The queue is not full.
  */
 void enqueue(Queue *const queue, const Vertex element);
 
 /**
  * @brief Removes the element at the front of the queue.
  * @param[in,out] queue The queue to remove from.
+ * @pre The queue is not empty.
  */
 void dequeue(Queue *const queue);
 
@@ -68,6 +75,7 @@ void dequeue(Queue *const queue);
  * @brief Gets the element at the front of the queue.
  * @param[in] queue The queue to get from.
  * @param[out] element The element at the front of the queue.
+ * @pre The queue is not empty.
  */
 void peak(Queue *const queue, Vertex element);
 
@@ -86,3 +94,7 @@ bool is_full(const Queue *const queue);
 bool is_empty(const Queue *const queue);
 
 #endif  // SOCIAL_NETWORK_QUEUE_H_
+
+#ifdef __cplusplus
+}
+#endif

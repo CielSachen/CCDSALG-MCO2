@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,9 @@
 
 /**
  * @file utils.h
- * @brief The header containing the APIs of the IO utility functions.
+ * @brief The utility functions that are used for interacting with the console (stdin/stdout).
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
 

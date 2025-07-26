@@ -1,24 +1,24 @@
-$path_sep = [System.IO.Path]::DirectorySeparatorChar
+$pathSep = [System.IO.Path]::DirectorySeparatorChar
 
-$source_dir_paths = ".$($path_sep)app", ".$($path_sep)include", ".$($path_sep)src"
-$source_file_exts = "*.c", "*.h"
+$sourceDirPaths = ".$($pathSep)app", ".$($pathSep)include", ".$($pathSep)src"
+$sourceFileExts = "*.c", "*.h"
 
-$out_dir_name = "dist"
-$out_dir_path = ".$($path_sep)$($out_dir_name)"
+$outDirName = "dist"
+$outDirPath = ".$($pathSep)$($outDirName)"
 
-if (-not(Test-Path -Path $out_dir_path)) {
-  New-Item -Path "." -Name $out_dir_name -ItemType "Directory" -Force | Out-Null
+if (-not(Test-Path -Path $outDirPath)) {
+  New-Item -Path "." -Name $outDirName -ItemType "Directory" -Force | Out-Null
 
-  Write-Output -InputObject "Created: $($out_dir_path)"
+  Write-Output -InputObject "Created: $($outDirPath)"
 
   Write-Output -InputObject ""
 }
 
-Write-Output -InputObject "Copying from $($source_dir_paths -join ", ") to $($out_dir_path)"
+Write-Output -InputObject "Copying from $($sourceDirPaths -join ", ") to $($outDirPath)"
 
-Get-ChildItem -Path $source_dir_paths -Include $source_file_exts -File -Recurse |
+Get-ChildItem -Path $sourceDirPaths -Include $sourceFileExts -File -Recurse |
 ForEach-Object -Process {
-  Copy-Item -Path $_.FullName -Destination $out_dir_path
+  Copy-Item -Path $_.FullName -Destination $outDirPath
 
   Write-Output -InputObject "  Copied: $($_.Name)"
 }
@@ -27,7 +27,7 @@ Write-Output -InputObject ""
 
 Write-Output -InputObject "Fixing source file #include directives"
 
-Get-ChildItem -Path $out_dir_path -Include $source_file_exts[0] -File -Recurse |
+Get-ChildItem -Path $outDirPath -Include $sourceFileExts[0] -File -Recurse |
 ForEach-Object -Process {
   (Get-Content -Path $_.FullName) -replace "#include `"[A-Za-z_]+\/", "#include `"" | Set-Content -Path $_.FullName
 

@@ -1,6 +1,6 @@
 /*
  * Social Network uses graphs to represent relationships between users.
- * Copyright (C) 2025  Raphael Panaligan
+ * Copyright (C) 2025  Raphael Panaligan  Jek Degullado
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
 
 /**
  * @file graph.c
- * @brief The source code containing the implementation of the graph helper functions.
  * @author Raphael Panaligan
+ * @author Jek Degullado
  * @copyright GNU AGPLv3
  */
 
@@ -30,8 +30,8 @@
 /**
  * @brief Initializes a graph’s vertex adjacency arrays to their default values and sets its vertex count.
  * @param[in,out] graph The graph to initialize.
- * @param vertex_count The number of vertices the graph should contain.
- * @pre The @p vertex_count doesn’t exceed `MAX_GRAPH_VERTEX_COUNT`.
+ * @param vertex_cnt The number of vertices the graph should contain.
+ * @pre The `vertex_cnt` doesn’t exceed `MAX_GRAPH_VERTEX_COUNT`.
  */
 void initialize_graph(Graph *const graph, const size_t vertex_cnt) {
     graph->vertex_count = vertex_cnt;
@@ -214,7 +214,7 @@ void sort_adjacencies(Graph *const graph) {
  * @brief Gets the edges formed by connections between vertices contained in a graph.
  * @param[in] graph The graph to get from.
  * @param[out] edges The edges of the graph.
- * @param[out] edge_count The number of edges the graph has.
+ * @param[out] edge_cnt The number of edges the graph has.
  */
 void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_cnt) {
     *edge_cnt = 0;
@@ -241,8 +241,8 @@ void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_c
  * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
  * @param[in] edges The edges to check against.
  * @param[in] edge_cnt The number of edges to check against.
- * @param[in] source_vertex The first or source vertex to check for.
- * @param[in] destination_vertex The second or destination vertex to check for.
+ * @param[in] src_vertex The first or source vertex to check for.
+ * @param[in] dest_vertex The second or destination vertex to check for.
  * @return Whether the pair of vertices has a corresponding edge in the array of edges.
  */
 bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex src_vertex, const Vertex dest_vertex) {
