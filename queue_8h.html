@@ -93,7 +93,7 @@ $(function(){initNavTree('queue_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>The header containing the public APIs of the queue implementation and its helper functions.  
+<p>The helper functions that are used for handling and interacting with queues and their elements.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="graph_8h_source.html">graph.h</a>&quot;</code><br />
@@ -126,8 +126,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a2b932cbc2dcce1a070deade5c334f295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a queue contains contains no queueing elements.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The header containing the public APIs of the queue implementation and its helper functions. </p>
-<dl class="section author"><dt>Author</dt><dd>Raphael Panaligan </dd></dl>
+<div class="textblock"><p>The helper functions that are used for handling and interacting with queues and their elements. </p>
+<dl class="section author"><dt>Author</dt><dd>Raphael Panaligan </dd>
+<dd>
+Jek Degullado </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU AGPLv3 </dd></dl>
 </div><a name="doc-typedef-members" id="doc-typedef-members"></a><h2 id="header-doc-typedef-members" class="groupheader">Typedef Documentation</h2>
 <a id="ad4f29a362a072ba563b41ae8e935c6fc" name="ad4f29a362a072ba563b41ae8e935c6fc"></a>
@@ -170,6 +172,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The queue is not empty. </dd></dl>
 
 </div>
 </div>
@@ -187,7 +190,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>elm</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>element</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -200,6 +203,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The queue is not full. </dd></dl>
 
 </div>
 </div>
@@ -294,7 +298,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>elm</em></span>&#160;)</td>
+          <td class="paramtype"><a class="el" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>element</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -307,6 +311,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The queue is not empty. </dd></dl>
 
 </div>
 </div>

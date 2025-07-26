@@ -93,7 +93,7 @@ $(function(){initNavTree('graph_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>The header containing the public APIs of the graph implementation and its helper functions.  
+<p>The helper functions that are used for handling and interacting with graphs and their vertices.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
@@ -109,6 +109,8 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:adf91ce080fd58336799b6f9f0b44b408" id="r_adf91ce080fd58336799b6f9f0b44b408"><td class="memItemLeft" align="right" valign="top"><a id="adf91ce080fd58336799b6f9f0b44b408" name="adf91ce080fd58336799b6f9f0b44b408"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>SOCIAL_NETWORK_GRAPH_H_</b></td></tr>
 <tr class="memitem:ab95be0d67ff1d7b37e9007fd29327d0f" id="r_ab95be0d67ff1d7b37e9007fd29327d0f"><td class="memItemLeft" align="right" valign="top"><a id="ab95be0d67ff1d7b37e9007fd29327d0f" name="ab95be0d67ff1d7b37e9007fd29327d0f"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_VERTEX_LABEL_LENGTH</b>&#160;&#160;&#160;8</td></tr>
 <tr class="memdesc:ab95be0d67ff1d7b37e9007fd29327d0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of characters a vertex’ label can have. <br /></td></tr>
@@ -138,10 +140,6 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac4f32d439d20d81c7bd76389917daab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the index of the adjacency array of a vertex from a graph.  <br /></td></tr>
 <tr class="memitem:a7434068bb46d3954f6642846e98c8183" id="r_a7434068bb46d3954f6642846e98c8183"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7434068bb46d3954f6642846e98c8183">has_vertex</a> (const <a class="el" href="struct_graph.html">Graph</a> *const graph, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> vertex)</td></tr>
 <tr class="memdesc:a7434068bb46d3954f6642846e98c8183"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a graph contains a vertex.  <br /></td></tr>
-<tr class="memitem:ac7f11c0a7b553d2fd6f59524e768c356" id="r_ac7f11c0a7b553d2fd6f59524e768c356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7f11c0a7b553d2fd6f59524e768c356">get_edges</a> (const <a class="el" href="struct_graph.html">Graph</a> *const graph, <a class="el" href="struct_graph_edge.html">GraphEdge</a> edges[], size_t *const edge_count)</td></tr>
-<tr class="memdesc:ac7f11c0a7b553d2fd6f59524e768c356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the edges formed by connections between vertices contained in a graph.  <br /></td></tr>
-<tr class="memitem:ae21a273729ca17d095932fd9f8511c8a" id="r_ae21a273729ca17d095932fd9f8511c8a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae21a273729ca17d095932fd9f8511c8a">has_edge</a> (const <a class="el" href="struct_graph_edge.html">GraphEdge</a> edges[], const size_t edge_cnt, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> source_vertex, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> destination_vertex)</td></tr>
-<tr class="memdesc:ae21a273729ca17d095932fd9f8511c8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a pair of vertices already has a corresponding edge in an array of edges.  <br /></td></tr>
 <tr class="memitem:a345cb7b0c8682abb0fdc64afea79269d" id="r_a345cb7b0c8682abb0fdc64afea79269d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a345cb7b0c8682abb0fdc64afea79269d">add_adjacency</a> (<a class="el" href="struct_graph.html">Graph</a> *const graph, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> key_vertex, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> adjacent_vertex)</td></tr>
 <tr class="memdesc:a345cb7b0c8682abb0fdc64afea79269d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an adjacency between a pair of vertices to a graph.  <br /></td></tr>
 <tr class="memitem:a830aa10be896c2390c417d56f972c368" id="r_a830aa10be896c2390c417d56f972c368"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a830aa10be896c2390c417d56f972c368">get_adjacency_count</a> (const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> adjacencies[<a class="el" href="#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a>])</td></tr>
@@ -150,10 +148,16 @@ Functions</h2></td></tr>
 <tr class="memdesc:acc943972f5207ef2998b172b1701022c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a key led array of adjacencies contains an adjacent vertex.  <br /></td></tr>
 <tr class="memitem:a903755d938f871ff5e5fc53a30f53422" id="r_a903755d938f871ff5e5fc53a30f53422"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a903755d938f871ff5e5fc53a30f53422">sort_adjacencies</a> (<a class="el" href="struct_graph.html">Graph</a> *const graph)</td></tr>
 <tr class="memdesc:a903755d938f871ff5e5fc53a30f53422"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts the adjacency arrays by their keys alphabetically, and sorts their adjacent vertices alphabetically.  <br /></td></tr>
+<tr class="memitem:ac7f11c0a7b553d2fd6f59524e768c356" id="r_ac7f11c0a7b553d2fd6f59524e768c356"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7f11c0a7b553d2fd6f59524e768c356">get_edges</a> (const <a class="el" href="struct_graph.html">Graph</a> *const graph, <a class="el" href="struct_graph_edge.html">GraphEdge</a> edges[], size_t *const edge_count)</td></tr>
+<tr class="memdesc:ac7f11c0a7b553d2fd6f59524e768c356"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the edges formed by connections between vertices contained in a graph.  <br /></td></tr>
+<tr class="memitem:a9db8ed925817f3c0c75bb6beff7489b0" id="r_a9db8ed925817f3c0c75bb6beff7489b0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9db8ed925817f3c0c75bb6beff7489b0">has_edge</a> (const <a class="el" href="struct_graph_edge.html">GraphEdge</a> edges[], const size_t edge_count, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> source_vertex, const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a> destination_vertex)</td></tr>
+<tr class="memdesc:a9db8ed925817f3c0c75bb6beff7489b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if a pair of vertices already has a corresponding edge in an array of edges.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The header containing the public APIs of the graph implementation and its helper functions. </p>
-<dl class="section author"><dt>Author</dt><dd>Raphael Panaligan </dd></dl>
+<div class="textblock"><p>The helper functions that are used for handling and interacting with graphs and their vertices. </p>
+<dl class="section author"><dt>Author</dt><dd>Raphael Panaligan </dd>
+<dd>
+Jek Degullado </dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU AGPLv3 </dd></dl>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="a345cb7b0c8682abb0fdc64afea79269d" name="a345cb7b0c8682abb0fdc64afea79269d"></a>
@@ -216,14 +220,6 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>The graph to clone from. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">new_graph</td><td>The graph to clone to.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Clones the contents of a graph into another graph.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>The graph to clone from. </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">new_graph</td><td>The graph to clone to. </td></tr>
   </table>
   </dd>
@@ -276,7 +272,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">size_t *const</td>          <td class="paramname"><span class="paramname"><em>edge_cnt</em></span>&#160;)</td>
+          <td class="paramtype">size_t *const</td>          <td class="paramname"><span class="paramname"><em>edge_count</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -320,15 +316,6 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The index of the vertex’ adjacency array, or <span class="tt">MAX_GRAPH_VERTEX_COUNT</span> if the graph doesn’t contain the vertex.</dd></dl>
-<p>Gets the index of the adjacency array of a vertex from a graph.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">graph</td><td>The graph to get from. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">vertex</td><td>The vertex to get the index of. </td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd>The index of the vertex’ adjacency array, or <span class="tt">MAX_GRAPH_VERTEX_COUNT</span> if the graph doesn’t contain the vertex. </dd></dl>
 
 </div>
@@ -364,8 +351,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae21a273729ca17d095932fd9f8511c8a" name="ae21a273729ca17d095932fd9f8511c8a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae21a273729ca17d095932fd9f8511c8a">&#9670;&#160;</a></span>has_edge()</h2>
+<a id="a9db8ed925817f3c0c75bb6beff7489b0" name="a9db8ed925817f3c0c75bb6beff7489b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9db8ed925817f3c0c75bb6beff7489b0">&#9670;&#160;</a></span>has_edge()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,17 +365,17 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>edge_cnt</em></span>, </td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>edge_count</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>src_vertex</em></span>, </td>
+          <td class="paramtype">const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>source_vertex</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>dest_vertex</em></span>&#160;)</td>
+          <td class="paramtype">const <a class="el" href="#addac07d828634b0dd7029db87ea78cf8">Vertex</a></td>          <td class="paramname"><span class="paramname"><em>destination_vertex</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -397,7 +384,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">edges</td><td>The edges to check against. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">edge_cnt</td><td>The number of edges to check against. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">edge_count</td><td>The number of edges to check against. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">source_vertex</td><td>The first or source vertex to check for. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">destination_vertex</td><td>The second or destination vertex to check for. </td></tr>
   </table>
@@ -452,7 +439,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>vertex_cnt</em></span>&#160;)</td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>vertex_count</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -465,7 +452,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section pre"><dt>Precondition</dt><dd>The <code class="param">vertex_count</code> doesn’t exceed <span class="tt">MAX_GRAPH_VERTEX_COUNT</span>. </dd></dl>
+<dl class="section pre"><dt>Precondition</dt><dd>The <span class="tt">vertex_count</span> doesn’t exceed <span class="tt">MAX_GRAPH_VERTEX_COUNT</span>. </dd></dl>
 
 </div>
 </div>

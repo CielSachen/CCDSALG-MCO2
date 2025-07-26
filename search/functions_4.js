@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['get_5fadjacency_5fcount_0',['get_adjacency_count',['../graph_8h.html#a830aa10be896c2390c417d56f972c368',1,'get_adjacency_count(const Vertex adjacencies[MAX_GRAPH_VERTEX_COUNT]):&#160;graph.c'],['../graph_8c.html#a830aa10be896c2390c417d56f972c368',1,'get_adjacency_count(const Vertex adjacencies[MAX_GRAPH_VERTEX_COUNT]):&#160;graph.c']]],
-  ['get_5fedges_1',['get_edges',['../graph_8h.html#ac7f11c0a7b553d2fd6f59524e768c356',1,'get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_count):&#160;graph.c'],['../graph_8c.html#a6997c695f57a7da0d95c7f61a12b2494',1,'get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_cnt):&#160;graph.c']]],
-  ['get_5fstring_5finput_2',['get_string_input',['../utils_8c.html#abfcb85f5fbe18999963ab159d30c6693',1,'get_string_input(char str[], const size_t max_len):&#160;utils.c'],['../utils_8h.html#a78b016262ad3a1572fac8ae308fa0f67',1,'get_string_input(char string[], const size_t max_length):&#160;utils.c']]],
-  ['get_5fvertex_5findex_3',['get_vertex_index',['../graph_8h.html#ac4f32d439d20d81c7bd76389917daab5',1,'get_vertex_index(const Graph *const graph, const Vertex vertex):&#160;graph.c'],['../graph_8c.html#ac4f32d439d20d81c7bd76389917daab5',1,'get_vertex_index(const Graph *const graph, const Vertex vertex):&#160;graph.c']]]
+  ['enqueue_0',['enqueue',['../queue_8h.html#a029b98452bca8d4e0045aee2147425ab',1,'queue.h']]]
 ];

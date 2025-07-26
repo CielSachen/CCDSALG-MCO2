@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vertex_0',['Vertex',['../graph_8h.html#addac07d828634b0dd7029db87ea78cf8',1,'graph.h']]]
+  ['stringbuffer_0',['StringBuffer',['../io_8h.html#ae0b34d0df47edaf7bc630bcf7b7c1192',1,'io.h']]]
 ];

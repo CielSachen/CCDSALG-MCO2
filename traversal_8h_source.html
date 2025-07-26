@@ -92,9 +92,9 @@ $(function(){initNavTree('traversal_8h_source.html','',''); });
   <div class="headertitle"><div class="title">traversal.h</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
+<a href="traversal_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">/*</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment"> * Social Network uses graphs to represent relationships between users.</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * Copyright (C) 2025  Raphael Panaligan</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment"> * Copyright (C) 2025  Raphael Panaligan  Jek Degullado</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> *</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment"> * This program is free software: you can redistribute it and/or modify</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment"> * it under the terms of the GNU General Public License as published by</span></div>
@@ -109,32 +109,43 @@ $(function(){initNavTree('traversal_8h_source.html','',''); });
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="comment"> * You should have received a copy of the GNU Affero General Public License</span></div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment"> * along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment"> */</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#ifndef SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#define SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;<a class="code" href="graph_8h.html">graph.h</a>&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keywordtype">void</span> breadth_first_search(<span class="keyword">const</span> <a class="code hl_struct" href="struct_graph.html">Graph</a> *<span class="keyword">const</span> graph, <span class="keyword">const</span> <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> starting_vertex,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                          <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> visited_vertices[<a class="code hl_define" href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a>], <span class="keywordtype">size_t</span> *<span class="keyword">const</span> visited_vertex_count);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keywordtype">void</span> depth_first_search(<span class="keyword">const</span> <a class="code hl_struct" href="struct_graph.html">Graph</a> *<span class="keyword">const</span> graph, <span class="keyword">const</span> <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> starting_vertex,</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>                        <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> visited_vertices[<a class="code hl_define" href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a>], <span class="keywordtype">size_t</span> *<span class="keyword">const</span> visited_vertex_cnt);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#endif  </span><span class="comment">// SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
-<div class="ttc" id="agraph_8h_html"><div class="ttname"><a href="graph_8h.html">graph.h</a></div><div class="ttdoc">The header containing the public APIs of the graph implementation and its helper functions.</div></div>
-<div class="ttc" id="agraph_8h_html_a9ad75f2c497201c34cb6c2d4e3c3aaa9"><div class="ttname"><a href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a></div><div class="ttdeci">#define MAX_GRAPH_VERTEX_COUNT</div><div class="ttdoc">The maximum number of vertices a graph can contain.</div><div class="ttdef"><b>Definition</b> graph.h:36</div></div>
-<div class="ttc" id="agraph_8h_html_addac07d828634b0dd7029db87ea78cf8"><div class="ttname"><a href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></div><div class="ttdeci">char Vertex[MAX_VERTEX_LABEL_LENGTH+1]</div><div class="ttdoc">A string labeled vertex in a graph.</div><div class="ttdef"><b>Definition</b> graph.h:39</div></div>
-<div class="ttc" id="astruct_graph_html"><div class="ttname"><a href="struct_graph.html">Graph</a></div><div class="ttdoc">A collection implementing the adjacency list data graph structure using arrays.</div><div class="ttdef"><b>Definition</b> graph.h:45</div></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="preprocessor">#ifndef SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#define SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#include &quot;<a class="code" href="graph_8h.html">graph.h</a>&quot;</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="traversal_8h.html#af63491c7bcb41da06761d5522af53d8f">   47</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="traversal_8h.html#af63491c7bcb41da06761d5522af53d8f">breadth_first_search</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_graph.html">Graph</a> *<span class="keyword">const</span> graph, <span class="keyword">const</span> <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> starting_vertex,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                          <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> visited_vertices[<a class="code hl_define" href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a>], <span class="keywordtype">size_t</span> *<span class="keyword">const</span> visited_vertex_count);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="traversal_8h.html#a2584ff7c9c0784e94ec24fa446ae5817">   58</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="traversal_8h.html#a2584ff7c9c0784e94ec24fa446ae5817">depth_first_search</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_graph.html">Graph</a> *<span class="keyword">const</span> graph, <span class="keyword">const</span> <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> starting_vertex,</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                        <a class="code hl_typedef" href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a> visited_vertices[<a class="code hl_define" href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a>], <span class="keywordtype">size_t</span> *<span class="keyword">const</span> visited_vertex_cnt);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif  </span><span class="comment">// SOCIAL_NETWORK_TRAVERSAL_H_</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agraph_8h_html"><div class="ttname"><a href="graph_8h.html">graph.h</a></div><div class="ttdoc">The helper functions that are used for handling and interacting with graphs and their vertices.</div></div>
+<div class="ttc" id="agraph_8h_html_a9ad75f2c497201c34cb6c2d4e3c3aaa9"><div class="ttname"><a href="graph_8h.html#a9ad75f2c497201c34cb6c2d4e3c3aaa9">MAX_GRAPH_VERTEX_COUNT</a></div><div class="ttdeci">#define MAX_GRAPH_VERTEX_COUNT</div><div class="ttdoc">The maximum number of vertices a graph can contain.</div><div class="ttdef"><b>Definition</b> graph.h:41</div></div>
+<div class="ttc" id="agraph_8h_html_addac07d828634b0dd7029db87ea78cf8"><div class="ttname"><a href="graph_8h.html#addac07d828634b0dd7029db87ea78cf8">Vertex</a></div><div class="ttdeci">char Vertex[MAX_VERTEX_LABEL_LENGTH+1]</div><div class="ttdoc">A string labeled vertex in a graph.</div><div class="ttdef"><b>Definition</b> graph.h:44</div></div>
+<div class="ttc" id="astruct_graph_html"><div class="ttname"><a href="struct_graph.html">Graph</a></div><div class="ttdoc">A collection implementing the adjacency list data graph structure using arrays.</div><div class="ttdef"><b>Definition</b> graph.h:50</div></div>
+<div class="ttc" id="atraversal_8h_html_a2584ff7c9c0784e94ec24fa446ae5817"><div class="ttname"><a href="traversal_8h.html#a2584ff7c9c0784e94ec24fa446ae5817">depth_first_search</a></div><div class="ttdeci">void depth_first_search(const Graph *const graph, const Vertex starting_vertex, Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_cnt)</div><div class="ttdoc">Traverses through all of a graph’s connected vertices starting from a specific vertex.</div></div>
+<div class="ttc" id="atraversal_8h_html_af63491c7bcb41da06761d5522af53d8f"><div class="ttname"><a href="traversal_8h.html#af63491c7bcb41da06761d5522af53d8f">breadth_first_search</a></div><div class="ttdeci">void breadth_first_search(const Graph *const graph, const Vertex starting_vertex, Vertex visited_vertices[MAX_GRAPH_VERTEX_COUNT], size_t *const visited_vertex_count)</div><div class="ttdoc">Traverses through all of a graph’s connected vertices starting from a specific vertex.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="dir_c7d69eb926cb85fdc8fccf06292a7374.html">social_network</a></li><li class="navelem"><b>traversal.h</b></li>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="dir_c7d69eb926cb85fdc8fccf06292a7374.html">social_network</a></li><li class="navelem"><a href="traversal_8h.html">traversal.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
