@@ -44,7 +44,7 @@ typedef char Vertex[MAX_VERTEX_LABEL_LENGTH + 1];
  */
 typedef struct Graph {
     /** @brief The number of vertices the graph contains. */
-    const size_t vertex_count;
+    size_t vertex_count;
     /**
      * @brief The vertices adjacent to the vertices contained by the graph.
      * @details This contains arrays of vertices, where the first vertex is the `key`, and the rest are the vertices
@@ -54,14 +54,6 @@ typedef struct Graph {
     /** @brief The number of vertex adjacency arrays the graph contains. */
     size_t adjacencies_length;
 } Graph;
-
-/** @brief A(n) (un)directed connection between two vertices in a graph. */
-typedef struct GraphEdge {
-    /** @brief The first or source vertex of the connection. */
-    Vertex source;
-    /** @brief The second or destination vertex of the connection. */
-    Vertex destination;
-} GraphEdge;
 
 /**
  * @brief Initializes a graph’s vertex adjacency arrays to their default values and sets its vertex count.
@@ -96,25 +88,6 @@ size_t get_vertex_index(const Graph *const graph, const Vertex vertex);
 bool has_vertex(const Graph *const graph, const Vertex vertex);
 
 /**
- * @brief Gets the edges formed by connections between vertices contained in a graph.
- * @param[in] graph The graph to get from.
- * @param[out] edges The edges of the graph.
- * @param[out] edge_count The number of edges the graph has.
- */
-void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_count);
-
-/**
- * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
- * @param[in] edges The edges to check against.
- * @param[in] edge_cnt The number of edges to check against.
- * @param[in] source_vertex The first or source vertex to check for.
- * @param[in] destination_vertex The second or destination vertex to check for.
- * @return Whether the pair of vertices has a corresponding edge in the array of edges.
- */
-bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex source_vertex,
-              const Vertex destination_vertex);
-
-/**
  * @brief Adds an adjacency between a pair of vertices to a graph.
  * @details This adds the adjacent vertex to the array of the key vertex. If the array doesn’t exist, this creates the
  * array before adding the adjacent vertex. If an adjacent vertex is not supplied, then this will still create the array
@@ -147,5 +120,32 @@ bool has_adjacency(const Vertex adjacencies[MAX_GRAPH_VERTEX_COUNT], const Verte
  * @param[in,out] graph The graph to sort.
  */
 void sort_adjacencies(Graph *const graph);
+
+/** @brief A(n) (un)directed connection between two vertices in a graph. */
+typedef struct GraphEdge {
+    /** @brief The first or source vertex of the connection. */
+    Vertex source;
+    /** @brief The second or destination vertex of the connection. */
+    Vertex destination;
+} GraphEdge;
+
+/**
+ * @brief Gets the edges formed by connections between vertices contained in a graph.
+ * @param[in] graph The graph to get from.
+ * @param[out] edges The edges of the graph.
+ * @param[out] edge_count The number of edges the graph has.
+ */
+void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_count);
+
+/**
+ * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
+ * @param[in] edges The edges to check against.
+ * @param[in] edge_cnt The number of edges to check against.
+ * @param[in] source_vertex The first or source vertex to check for.
+ * @param[in] destination_vertex The second or destination vertex to check for.
+ * @return Whether the pair of vertices has a corresponding edge in the array of edges.
+ */
+bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex source_vertex,
+              const Vertex destination_vertex);
 
 #endif  // SOCIAL_NETWORK_GRAPH_H_

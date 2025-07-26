@@ -34,7 +34,7 @@
  * @pre The @p vertex_count doesn’t exceed `MAX_GRAPH_VERTEX_COUNT`.
  */
 void initialize_graph(Graph *const graph, const size_t vertex_cnt) {
-    *(size_t *)&graph->vertex_count = vertex_cnt;
+    graph->vertex_count = vertex_cnt;
     graph->adjacencies_length = 0;
 
     for (size_t vertex_idx = 0; vertex_idx < MAX_GRAPH_VERTEX_COUNT; vertex_idx++) {
@@ -99,56 +99,6 @@ bool has_vertex(const Graph *const graph, const Vertex vertex) {
 }
 
 /**
- * @brief Gets the edges formed by connections between vertices contained in a graph.
- * @param[in] graph The graph to get from.
- * @param[out] edges The edges of the graph.
- * @param[out] edge_count The number of edges the graph has.
- */
-void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_cnt) {
-    *edge_cnt = 0;
-
-    for (size_t i = 0; i < graph->vertex_count; i++) {
-        size_t j = 1;
-
-        while (strlen(graph->adjacencies_by_vertex[i][j]) > 0) {
-            if (!has_edge(edges, *edge_cnt, graph->adjacencies_by_vertex[i][0], graph->adjacencies_by_vertex[i][j])) {
-                GraphEdge *edge = &edges[*edge_cnt];
-
-                strncpy(edge->source, graph->adjacencies_by_vertex[i][0], MAX_VERTEX_LABEL_LENGTH);
-                strncpy(edge->destination, graph->adjacencies_by_vertex[i][j], MAX_VERTEX_LABEL_LENGTH);
-
-                *edge_cnt += 1;
-            }
-
-            j++;
-        }
-    }
-}
-
-/**
- * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
- * @param[in] edges The edges to check against.
- * @param[in] edge_cnt The number of edges to check against.
- * @param[in] source_vertex The first or source vertex to check for.
- * @param[in] destination_vertex The second or destination vertex to check for.
- * @return Whether the pair of vertices has a corresponding edge in the array of edges.
- */
-bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex src_vertex, const Vertex dest_vertex) {
-    for (size_t i = 0; i < edge_cnt; i++) {
-        const GraphEdge *const edge = &edges[i];
-
-        if ((strncmp(edge->source, src_vertex, MAX_VERTEX_LABEL_LENGTH) == 0 &&
-             strncmp(edge->destination, dest_vertex, MAX_VERTEX_LABEL_LENGTH) == 0) ||
-            (strncmp(edge->source, dest_vertex, MAX_VERTEX_LABEL_LENGTH) == 0 &&
-             strncmp(edge->destination, src_vertex, MAX_VERTEX_LABEL_LENGTH) == 0)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-/**
  * @brief Adds an adjacency between a pair of vertices to a graph.
  * @details This adds the adjacent vertex to the array of the key vertex. If the array doesn’t exist, this creates the
  * array before adding the adjacent vertex. If an adjacent vertex is not supplied, then this will still create the array
@@ -169,7 +119,7 @@ void add_adjacency(Graph *const graph, const Vertex key_vertex, const Vertex adj
         strncpy(graph->adjacencies_by_vertex[key_vertex_idx][0], key_vertex, MAX_VERTEX_LABEL_LENGTH);
     }
 
-    if (!key_vertex) {
+    if (!adjacent_vertex) {
         return;
     }
 
@@ -258,4 +208,54 @@ void sort_adjacencies(Graph *const graph) {
             }
         }
     }
+}
+
+/**
+ * @brief Gets the edges formed by connections between vertices contained in a graph.
+ * @param[in] graph The graph to get from.
+ * @param[out] edges The edges of the graph.
+ * @param[out] edge_count The number of edges the graph has.
+ */
+void get_edges(const Graph *const graph, GraphEdge edges[], size_t *const edge_cnt) {
+    *edge_cnt = 0;
+
+    for (size_t i = 0; i < graph->vertex_count; i++) {
+        size_t j = 1;
+
+        while (strlen(graph->adjacencies_by_vertex[i][j]) > 0) {
+            if (!has_edge(edges, *edge_cnt, graph->adjacencies_by_vertex[i][0], graph->adjacencies_by_vertex[i][j])) {
+                GraphEdge *edge = &edges[*edge_cnt];
+
+                strncpy(edge->source, graph->adjacencies_by_vertex[i][0], MAX_VERTEX_LABEL_LENGTH);
+                strncpy(edge->destination, graph->adjacencies_by_vertex[i][j], MAX_VERTEX_LABEL_LENGTH);
+
+                *edge_cnt += 1;
+            }
+
+            j++;
+        }
+    }
+}
+
+/**
+ * @brief Checks if a pair of vertices already has a corresponding edge in an array of edges.
+ * @param[in] edges The edges to check against.
+ * @param[in] edge_cnt The number of edges to check against.
+ * @param[in] source_vertex The first or source vertex to check for.
+ * @param[in] destination_vertex The second or destination vertex to check for.
+ * @return Whether the pair of vertices has a corresponding edge in the array of edges.
+ */
+bool has_edge(const GraphEdge edges[], const size_t edge_cnt, const Vertex src_vertex, const Vertex dest_vertex) {
+    for (size_t i = 0; i < edge_cnt; i++) {
+        const GraphEdge *const edge = &edges[i];
+
+        if ((strncmp(edge->source, src_vertex, MAX_VERTEX_LABEL_LENGTH) == 0 &&
+             strncmp(edge->destination, dest_vertex, MAX_VERTEX_LABEL_LENGTH) == 0) ||
+            (strncmp(edge->source, dest_vertex, MAX_VERTEX_LABEL_LENGTH) == 0 &&
+             strncmp(edge->destination, src_vertex, MAX_VERTEX_LABEL_LENGTH) == 0)) {
+            return true;
+        }
+    }
+
+    return false;
 }
