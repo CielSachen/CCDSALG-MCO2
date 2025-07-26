@@ -40,7 +40,7 @@ extern "C" {
 /** @brief The maximum number of vertices a graph can contain. */
 #define MAX_GRAPH_VERTEX_COUNT 20
 
-/** @brief A string labeled vertex in a graph. */
+/** @brief A string-labeled vertex in a graph. */
 typedef char Vertex[MAX_VERTEX_LABEL_LENGTH + 1];
 
 /**
