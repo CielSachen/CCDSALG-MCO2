@@ -112,8 +112,7 @@ bool has_vertex(const Graph *const graph, const Vertex vertex) {
 void add_adjacency(Graph *const graph, const Vertex key_vertex, const Vertex adjacent_vertex) {
     const bool has_key_vertex = has_vertex(graph, key_vertex);
 
-    const size_t key_vertex_idx =
-        has_key_vertex ? get_vertex_index(graph, adjacent_vertex) : graph->adjacencies_length++;
+    const size_t key_vertex_idx = has_key_vertex ? get_vertex_index(graph, key_vertex) : graph->adjacencies_length++;
 
     if (!has_key_vertex) {
         strncpy(graph->adjacencies_by_vertex[key_vertex_idx][0], key_vertex, MAX_VERTEX_LABEL_LENGTH);

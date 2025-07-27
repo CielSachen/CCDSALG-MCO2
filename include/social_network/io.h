@@ -36,7 +36,7 @@ extern "C" {
 #include "graph.h"
 
 /** @brief The size of buffers used in IO operations. */
-#define BUFFER_SIZE 32
+#define BUFFER_SIZE 64
 
 /** @brief The delimiter to use when tokenizing strings to exclude whitespace characters. */
 #define WHITESPACE_DELIMITER " \f\n\r\t\v"
