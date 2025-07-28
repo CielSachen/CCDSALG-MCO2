@@ -25,6 +25,7 @@
 
 #include "social_network/traversal.h"
 
+#include <stdio.h>
 #include <string.h>
 
 #include "social_network/queue.h"
@@ -100,19 +101,21 @@ static void deep_depth_first_search(const Graph *const graph, const Vertex start
 
     is_visited[starting_vertex_idx] = true;
 
-    size_t i = 1;
+    if (*visited_vertex_cnt < graph->vertex_count) {
+        size_t i = 1;
 
-    while (strlen(graph->adjacencies_by_vertex[starting_vertex_idx][i]) > 0) {
-        size_t adjacent_vertex_idx = get_vertex_index(graph, graph->adjacencies_by_vertex[starting_vertex_idx][i]);
+        while (strlen(graph->adjacencies_by_vertex[starting_vertex_idx][i]) > 0) {
+            size_t adjacent_vertex_idx = get_vertex_index(graph, graph->adjacencies_by_vertex[starting_vertex_idx][i]);
 
-        if (!is_visited[adjacent_vertex_idx]) {
-            is_visited[adjacent_vertex_idx] = true;
+            if (!is_visited[adjacent_vertex_idx]) {
+                is_visited[adjacent_vertex_idx] = true;
 
-            deep_depth_first_search(graph, graph->adjacencies_by_vertex[adjacent_vertex_idx][0], is_visited,
-                                    visited_vertices, visited_vertex_cnt);
+                deep_depth_first_search(graph, graph->adjacencies_by_vertex[adjacent_vertex_idx][0], is_visited,
+                                        visited_vertices, visited_vertex_cnt);
+            }
+
+            i++;
         }
-
-        i++;
     }
 }
 
