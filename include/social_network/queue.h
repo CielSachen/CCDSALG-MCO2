@@ -36,6 +36,12 @@ extern "C" {
 #include "graph.h"
 
 /**
+ * @brief The maximum number of elements a queue can contain.
+ * @details The queue uses a simple implementation. Therefore, this will include removed elements as well.
+ */
+#define MAX_QUEUE_LENGTH (MAX_GRAPH_VERTEX_COUNT * MAX_GRAPH_VERTEX_COUNT)
+
+/**
  * @brief A collection implementing the [queue data structure](https://www.geeksforgeeks.org/dsa/queue-data-structure/)
  * using an array.
  * @details This is a simple implementation, not a circular implementation. Therefore, the queue can only be consumed
@@ -43,7 +49,7 @@ extern "C" {
  */
 typedef struct Queue {
     /** @brief The ordered data contained in the queue. */
-    Vertex data[MAX_GRAPH_VERTEX_COUNT];
+    Vertex data[MAX_QUEUE_LENGTH];
     /** @brief The index of the first element in the queue. */
     size_t front;
     /** @brief The index of the last element in the queue. */

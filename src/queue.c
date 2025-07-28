@@ -35,7 +35,7 @@ void initialize_queue(Queue *const queue) {
     queue->front = 0;
     queue->rear = 0;
 
-    for (size_t i = 0; i < MAX_GRAPH_VERTEX_COUNT; i++) {
+    for (size_t i = 0; i < MAX_QUEUE_LENGTH; i++) {
         for (size_t j = 0; j < MAX_VERTEX_LABEL_LENGTH; j++) {
             queue->data[i][j] = '\0';
         }
